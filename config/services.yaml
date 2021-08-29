@@ -1,0 +1,11 @@
+services:
+    SendGrid:
+        class: \SendGrid
+        arguments: [ '%nurschool_sendgrid.api_key%' ]
+
+    nurschool_sendgrid_provider:
+        class: Nurschool\Bundle\NurschoolSendGridBundle\Provider\SendGridProvider
+        arguments:
+            $disableDelivery: '%nurschool_sendgrid.disable_delivery%'
+            $redirectTo: '%nurschool_sendgrid.redirect_to%'
+            $sandbox: '%nurschool_sendgrid.sandbox%'
