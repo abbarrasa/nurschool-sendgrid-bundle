@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\Event;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Event;
 
 
 use SendGrid\Mail\Mail;
 
-interface SendGridEventInterface
+interface SendgridEventInterface
 {
     public const STARTED = 'sendgrid.started';
     public const FINISHED = 'sendgrid.finished';

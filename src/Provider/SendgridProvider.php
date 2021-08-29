@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\Provider;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Provider;
 
-use Nurschool\Bundle\NurschoolSendGridBundle\EventDispatcher\SendGridEventDispatcherInterface;
-use Nurschool\Bundle\NurschoolSendGridBundle\SendGrid\Exception\SendGridException;
+use Nurschool\Bundle\NurschoolSendgridBundle\EventDispatcher\SendgridEventDispatcherInterface;
+use Nurschool\Bundle\NurschoolSendgridBundle\Exception\SendgridException;
 use SendGrid\Mail\Mail;
 use SendGrid\Mail\MailSettings;
 use SendGrid\Mail\Personalization;
@@ -22,12 +22,12 @@ use SendGrid\Mail\SandBoxMode;
 use SendGrid\Mail\To;
 use SendGrid\Response;
 
-class SendGridProvider
+class SendgridProvider
 {
     /** @var \SendGrid */
     private $apiClient;
 
-    /** @var SendGridEventDispatcherInterface */
+    /** @var SendgridEventDispatcherInterface */
     private $eventDispatcher;
 
     /** @var mixed */
@@ -49,11 +49,11 @@ class SendGridProvider
     private $redirectPersonalization;
 
     public function __construct(
-        \SendGrid $apiClient,
-        SendGridEventDispatcherInterface $eventDispatcher,
-        $redirectTo = false,
-        bool $disableDelivery = true,
-        bool $sandbox = true
+        \SendGrid                        $apiClient,
+        SendgridEventDispatcherInterface $eventDispatcher,
+                                         $redirectTo = false,
+        bool                             $disableDelivery = true,
+        bool                             $sandbox = true
     ) {
         $this->apiClient = $apiClient;
         $this->eventDispatcher = $eventDispatcher;

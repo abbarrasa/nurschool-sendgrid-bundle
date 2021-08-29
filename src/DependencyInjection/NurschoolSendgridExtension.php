@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\DependencyInjection;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class NurschoolSendGridExtension extends Extension
+class NurschoolSendgridExtension extends Extension
 {
     /**
      * @inheritDoc

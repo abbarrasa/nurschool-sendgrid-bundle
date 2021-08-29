@@ -11,12 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\EventDispatcher;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Exception;
 
 
-use Nurschool\Bundle\NurschoolSendGridBundle\Event\SendGridEventInterface;
-
-interface SendGridEventDispatcherInterface
+class UnauthorizedSendgridException extends SendGridException
 {
-    public function dispatch(SendGridEventInterface $event, string $eventName = null): void;
+
 }

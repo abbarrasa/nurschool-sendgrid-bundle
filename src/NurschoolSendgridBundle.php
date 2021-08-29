@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\Exception;
+namespace Nurschool\Bundle\NurschoolSendgridBundle;
 
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class UnauthorizedSendGridException extends SendGridException
+class NurschoolSendgridBundle extends Bundle
 {
-
 }

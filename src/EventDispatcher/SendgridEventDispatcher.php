@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\EventDispatcher;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\EventDispatcher;
 
 
-use Nurschool\Bundle\NurschoolSendGridBundle\Event\SendGridEventInterface;
+use Nurschool\Bundle\NurschoolSendgridBundle\Event\SendgridEventInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class SendGridEventDispatcher implements SendGridEventDispatcherInterface
+class SendgridEventDispatcher implements SendgridEventDispatcherInterface
 {
     private $dispatcher;
 
@@ -26,7 +26,7 @@ class SendGridEventDispatcher implements SendGridEventDispatcherInterface
         $this->dispatcher = $dispatcher;
     }
 
-    public function dispatch(SendGridEventInterface $event, string $eventName = null): void
+    public function dispatch(SendgridEventInterface $event, string $eventName = null): void
     {
         $this->dispatcher->dispatch($event, $eventName);
     }

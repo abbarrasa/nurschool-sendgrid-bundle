@@ -11,10 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\Exception;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Exception;
 
 
-class AccessDeniedSendGridException extends SendGridException
+class AccessDeniedSendgridException extends SendgridException
 {
-
 }

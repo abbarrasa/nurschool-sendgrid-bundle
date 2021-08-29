@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\SendGrid\Logger;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Logger;
 
 
 use SendGrid\Mail\Mail;
 
-interface SendGridLoggerInterface
+interface SendgridLoggerInterface
 {
     public function logSendingStarted(Mail $mail): void;
     public function logSendingFinished(Mail $mail, ?string $messageId = null): void;

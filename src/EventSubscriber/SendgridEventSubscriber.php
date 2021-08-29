@@ -14,19 +14,19 @@ declare(strict_types=1);
 namespace Nurschool\Bundle\NurschoolSendGridBundle\EventSubscriber;
 
 
-use Nurschool\Bundle\NurschoolSendGridBundle\Event\SendGridEventInterface;
-use Nurschool\Bundle\NurschoolSendGridBundle\SendGrid\Logger\SendGridLoggerInterface;
+use Nurschool\Bundle\NurschoolSendgridBundle\Event\SendgridEventInterface;
+use Nurschool\Bundle\NurschoolSendgridBundle\SendGrid\Logger\SendgridLoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class SendGridEventSubscriber implements SendGridEventSubscriberInterface, EventSubscriberInterface
+class SendgridEventSubscriber implements SendgridEventSubscriberInterface, EventSubscriberInterface
 {
-    /** @var SendGridLoggerInterface */
+    /** @var SendgridLoggerInterface */
     private $logger;
 
     /**
-     * @param SendGridLoggerInterface $logger
+     * @param SendgridLoggerInterface $logger
      */
-    public function setLogger(SendGridLoggerInterface $logger)
+    public function setLogger(SendgridLoggerInterface $logger)
     {
         $this->logger = $logger;
     }
@@ -37,13 +37,13 @@ class SendGridEventSubscriber implements SendGridEventSubscriberInterface, Event
     public static function getSubscribedEvents()
     {
         return [
-            SendGridEventInterface::STARTED => 'onStarted',
-            SendGridEventInterface::FINISHED => 'onFinished',
-            SendGridEventInterface::FAILED => 'onFailed'
+            SendgridEventInterface::STARTED => 'onStarted',
+            SendgridEventInterface::FINISHED => 'onFinished',
+            SendgridEventInterface::FAILED => 'onFailed'
         ];
     }
 
-    public function onFailed(SendGridEventInterface $event): void
+    public function onFailed(SendgridEventInterface $event): void
     {
         if (null !== $this->logger) {
             $mail = $event->getMail();
@@ -51,7 +51,7 @@ class SendGridEventSubscriber implements SendGridEventSubscriberInterface, Event
         }
     }
 
-    public function onStarted(SendGridEventInterface $event): void
+    public function onStarted(SendgridEventInterface $event): void
     {
         if (null !== $this->logger) {
             $mail = $event->getMail();
@@ -59,7 +59,7 @@ class SendGridEventSubscriber implements SendGridEventSubscriberInterface, Event
         }
     }
 
-    public function onFinished(SendGridEventInterface $event): void
+    public function onFinished(SendgridEventInterface $event): void
     {
         if (null !== $this->logger) {
             $mail = $event->getMail();

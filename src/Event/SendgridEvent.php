@@ -11,13 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Bundle\NurschoolSendGridBundle\Event;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Event;
 
-use Nurschool\Shared\Infrastructure\Email\SendGrid\Event\SendGridEventInterface;
 use SendGrid\Mail\Mail;
 use Symfony\Contracts\EventDispatcher\Event;
 
-final class SendGridEvent extends Event implements SendGridEventInterface
+final class SendgridEvent extends Event implements SendgridEventInterface
 {
     /** @var Mail */
     private $mail;

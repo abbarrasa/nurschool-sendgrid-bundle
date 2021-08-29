@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nurschool\Shared\Infrastructure\Email\SendGrid\Logger;
+namespace Nurschool\Bundle\NurschoolSendgridBundle\Logger;
 
 
 use Psr\Log\LoggerInterface;
@@ -20,7 +20,7 @@ use SendGrid\Mail\Content;
 use SendGrid\Mail\EmailAddress;
 use SendGrid\Mail\Mail;
 
-final class SendGridLogger implements SendGridLoggerInterface
+final class SendgridLogger implements SendgridLoggerInterface
 {
     /** @var LoggerInterface */
     private $logger;
