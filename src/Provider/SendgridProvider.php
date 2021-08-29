@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace Nurschool\Bundle\NurschoolSendgridBundle\Provider;
 
+use Nurschool\Bundle\NurschoolSendgridBundle\Event\SendgridEvent;
 use Nurschool\Bundle\NurschoolSendgridBundle\EventDispatcher\SendgridEventDispatcherInterface;
+use Nurschool\Bundle\NurschoolSendgridBundle\Exception\AccessDeniedSendgridException;
+use Nurschool\Bundle\NurschoolSendgridBundle\Exception\BadRequestSendgridException;
 use Nurschool\Bundle\NurschoolSendgridBundle\Exception\SendgridException;
+use Nurschool\Bundle\NurschoolSendgridBundle\Exception\UnauthorizedSendgridException;
 use SendGrid\Mail\Mail;
 use SendGrid\Mail\MailSettings;
 use SendGrid\Mail\Personalization;
@@ -109,9 +113,9 @@ class SendgridProvider
      */
     public function sendMail(Mail $mail): ?string
     {
-        $this->eventDispatcher->dispatch(new SendGridEvent($mail), SendGridEvent::STARTED);
+        $this->eventDispatcher->dispatch(new SendgridEvent($mail), SendgridEvent::STARTED);
         if ($this->disableDelivery) {
-            $this->eventDispatcher->dispatch(new SendGridEvent($mail), SendGridEvent::FINISHED);
+            $this->eventDispatcher->dispatch(new SendgridEvent($mail), SendgridEvent::FINISHED);
             return null;
         }
 
@@ -184,19 +188,19 @@ class SendgridProvider
     private function checkResponse(Response $response): void
     {
         if ($response->statusCode() == 401) {
-            throw new UnauthorizedSendGridException($response->body());
+            throw new UnauthorizedSendgridException($response->body());
         }
 
         if ($response->statusCode() == 403) {
-            throw new AccessDeniedSendGridException($response->body());
+            throw new AccessDeniedSendgridException($response->body());
         }
 
         if (preg_match('/5[0-9]{2}/', strval($response->statusCode()))) {
-            throw new SendGridException($response->body());
+            throw new SendgridException($response->body());
         }
 
         if (preg_match('/4[0-9]{2}/', strval($response->statusCode()))) {
-            throw new BadRequestSendGridException($response->body());
+            throw new BadRequestSendgridException($response->body());
         }
     }
 }
