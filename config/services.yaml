@@ -3,9 +3,15 @@ services:
         class: \SendGrid
         arguments: [ '%nurschool_sendgrid.api_key%' ]
 
+    nurschool_sendgrid.event_dispatcher:
+        class: Nurschool\Bundle\NurschoolSendgridBundle\EventDispatcher\SendgridEventDispatcher
+        autowire: true
+
     nurschool_sendgrid.provider:
         class: Nurschool\Bundle\NurschoolSendgridBundle\Provider\SendgridProvider
         arguments:
-            $disableDelivery: '%nurschool_sendgrid.disable_delivery%'
-            $redirectTo: '%nurschool_sendgrid.redirect_to%'
-            $sandbox: '%nurschool_sendgrid.sandbox%'
+            - '@SendGrid'
+            - '@nurschool_sendgrid.event_dispatcher'
+            - '%nurschool_sendgrid.disable_delivery%'
+            - '%nurschool_sendgrid.redirect_to%'
+            - '%nurschool_sendgrid.sandbox%'
